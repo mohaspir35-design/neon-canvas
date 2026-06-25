@@ -7,6 +7,7 @@
     <style>
         * {
             box-sizing: border-box;
+            transition: all 0.4s ease;
         }
         body {
             margin: 0;
@@ -20,14 +21,29 @@
             height: 100vh;
             overflow: hidden;
         }
+        /* Custom Themes */
+        body.pink-mode {
+            background: #0f0914;
+        }
+        body.pink-mode h1 {
+            color: #ff007f;
+            text-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+        }
+        body.pink-mode .btn {
+            background: rgba(255, 0, 127, 0.1);
+            border-color: #ff007f;
+            color: #ff007f;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+        }
+
         .container {
             text-align: center;
-            padding: 2rem;
-            border-radius: 16px;
+            padding: 2.5rem;
+            border-radius: 20px;
             background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
         }
         h1 {
             font-size: 2.5rem;
@@ -38,8 +54,23 @@
         }
         p {
             color: #8a8f98;
-            margin: 0;
+            margin: 0 0 25px 0;
             font-size: 0.9rem;
+        }
+        .btn {
+            background: rgba(0, 255, 204, 0.05);
+            color: #00ffcc;
+            border: 1px solid #00ffcc;
+            padding: 12px 24px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn:active {
+            transform: scale(0.95);
         }
     </style>
 </head>
@@ -47,6 +78,19 @@
     <div class="container">
         <h1>neon-canvas</h1>
         <p>system operational // ready to build</p>
+        <button class="btn" onclick="toggleTheme()">initiate pulse</button>
     </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('pink-mode');
+            const btn = document.querySelector('.btn');
+            if(document.body.classList.contains('pink-mode')) {
+                btn.textContent = 'reverse pulse';
+            } else {
+                btn.textContent = 'initiate pulse';
+            }
+        }
+    </script>
 </body>
 </html>
